@@ -1,0 +1,12 @@
+[Unit]
+Description=Network Connectivity fix
+After=display-manager.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/ip link set dev ra0 up
+ExecStart=/usr/bin/systemctl start NetworkManager
+
+[Install]
+WantedBy=multi-user.target
